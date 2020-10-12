@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import Doc from '../Data/tropes3.json';
 import '../Css/AnnoPaper.css';
 
 const isNumeric = (str) => {
@@ -16,6 +17,8 @@ export default ({ data, result, handleClosePaperFunc, handleSaveResultFunc }) =>
             title: 'Default',
             annotations: {}
     }));
+    const [ tooltipStyle, setTooltipStyle ] = useState({});
+    const [ tooltipContent, setTooltipContent ] = useState(false);
 
     const handleChooseTropeOption = (e, trope, opt) => {
 
@@ -74,7 +77,31 @@ export default ({ data, result, handleClosePaperFunc, handleSaveResultFunc }) =>
             success: true,
             msg: ''
         };
-    };
+    }
+
+    const handleChangeDefinition = (e, trope) => {
+        
+        // if (showDefintion && trope === tooltipContent.trope) setShowDefintion(false);
+        // else {
+            if (trope in Doc) {
+                setTooltipStyle({
+                    visibility: 'visible',
+                    opacity: 1,
+                    transition: 'opacity 0.3s'
+                });
+                let { category, sub_category, definition } = Doc[trope];
+                setTooltipContent({
+                    trope: trope,
+                    category: category || '...',
+                    sub_category: sub_category || '...', 
+                    definition: definition
+                });
+            }
+            else {
+                setTooltipStyle({});
+            }
+        // }
+    }
 
     useEffect(() => {
         setTempResult(result);
@@ -101,7 +128,19 @@ export default ({ data, result, handleClosePaperFunc, handleSaveResultFunc }) =>
                 
             >
                 <div id="paper_container_row1">
-                    <p id="paper_container_row1_title">{`${data.idx}. ${data.title}`}</p>
+                    <div id="paper_container_row1_title"><p>{`${data.idx}. ${data.title}`}</p></div>
+                    <div 
+                        id="paper_container_row1_trope_tooltip"
+                        style={tooltipStyle}
+                    >
+                        <p id="paper_container_row1_trope_tooltip_title">
+                            {`${tooltipContent.trope}`}
+                        </p>
+                        <p id="paper_container_row1_trope_tooltip_subtitle">
+                            {`[ ${tooltipContent.category} / ${tooltipContent.sub_category} ]`}
+                        </p>
+                        <p id="paper_container_row1_trope_tooltip_content">{tooltipContent.definition}</p>
+                    </div>
                 </div>
                 <div id="paper_container_row2">
                     <div id="paper_container_row2_corpus_content">
@@ -122,13 +161,21 @@ export default ({ data, result, handleClosePaperFunc, handleSaveResultFunc }) =>
                                 key={trope_idx}
                                 
                             >
-                                <div className="paper_container_row2_trope_title">
+                                <div 
+                                    className="paper_container_row2_trope_title"
+                                    // onClick={(e) => handleShowDefinition(e, trope)}
+                                    onMouseOver={(e) => handleChangeDefinition(e, trope)}
+                                    onMouseOut={() => { setTooltipStyle({
+                                        opacity: 0,
+                                        transition: 'opacity 1.0s'
+                                    })}}
+                                >
                                     {trope}
                                 </div>
                                 <div className="paper_container_row2_trope_option_group">
                                     {['Match', 'Similar', 'None'].map((opt, opt_idx) => {
                                         let selected_style = (trope in tempResult.annotations && tempResult.annotations[trope].option === opt)? 
-                                            { backgroundColor: 'green' }:{};
+                                            { backgroundColor: ' rgb(151, 151, 126)' }:{};
                                         return (
                                             <div 
                                                 className="paper_container_row2_trope_option"
@@ -168,6 +215,7 @@ export default ({ data, result, handleClosePaperFunc, handleSaveResultFunc }) =>
                                         </React.Fragment>
                                     )}
                                 </div>
+                                <div className="paper_container_row2_trope_box_line"></div>
                             </div>
                         ))}
                     </div>

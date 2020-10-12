@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Corpus from '../Data/plots4amt.json';
-import Tropes from '../Data/tropes4amt.json';
+import Tropes from '../Data/tropes4amt_sampled.json';
 import AnnoPaper from './AnnoPaper';
 import '../Css/CorpusList.css';
 
@@ -110,7 +110,7 @@ export default () => {
                 <div id="corpus_list_title">Trope Annotation</div>
                 <div id="corpus_list_content">
                     {Object.keys(Corpus).map((title, title_idx) => {
-                        // if (IGNORE_CORPUS.includes(title)) return null;
+                        if (IGNORE_CORPUS.includes(title)) return null;
                         let tropes = Tropes[title];
                         let completed_style = {};
                         let completed_annotations = Object.keys(result[title].annotations);

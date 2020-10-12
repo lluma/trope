@@ -18,30 +18,75 @@
         display: flex;
         width: 90%;
         height: 90%;
-        background-color: rgba(224, 156, 129, 0.97);
+        background-color: rgba(219, 188, 175, 0.97);
         border-radius: 8px;
         flex-direction: column;
         align-items: center;
     }
         #paper_container_row1 {
             display: flex;
-            width: 70%;
+            width: 100%;
             height: 10%;
-            margin: 10px;
-            background-color: yellow;
+            margin: 5px;
+            /* background-color: yellow; */
             -webkit-box-pack: center;
-            justify-content: center;
+            justify-content: left;
             -webkit-box-align: center;
             align-items: center;
+            /* align-content: space-around; */
             font-size: large;
             font-family: 'Comfortaa', cursive;
         }
+            #paper_container_row1_title {
+                width: 60%;
+                height: 100%;
+                padding-left: 30px;
+                /* background-color: forestgreen; */
+            }
+            #paper_container_row1_trope_tooltip {
+                text-align: left;
+                width: 400px;
+                height: 200px;
+                top: 0;
+                left: calc(50% - 200px - 8px);
+                background-color: #555;
+                color: #fff;
+                border-radius: 6px;
+                padding: 16px;
+                z-index: 2;
+                margin: 8px 5px;
+                position: absolute;
+                opacity: 0;
+                transition: opacity 0.3s;
+                /* visibility: hidden; */
+                /* visibility: hidden;
+                left: 50%;
+                margin-left: -60px;
+                
+                 */
+            }
+                #paper_container_row1_trope_tooltip_title {
+                    font-size: x-large;
+                    font-weight: 700;
+                    margin: 0;
+                    margin-bottom: 5px;
+                }
+                #paper_container_row1_trope_tooltip_subtitle {
+                    font-size: large;
+                    font-weight: 500;
+                    margin: 0;
+                    margin-bottom: 15px;
+                }
+                #paper_container_row1_trope_tooltip_content {
+                    /* font-size: ; */
+                    margin: 0;
+                }
         #paper_container_row2 {
             display: flex;
             width: 100%;
             height: 90%;
             margin-top: 10px;
-            background-color: red;
+            /* background-color: red; */
             -webkit-box-pack: center;
             justify-content: center;
             -webkit-box-align: center;
@@ -50,10 +95,11 @@
             #paper_container_row2_corpus_content {
                 display: flex;
                 width: 80%;
-                height: 95%;
-                margin-right: 20px;
+                height: 90%;
+                margin-left:5px;
+                margin-right: 15px;
                 flex-direction: column;
-                background-color: blue;
+                /* background-color: blue; */
                 overflow-x: hidden;
                 overflow-y: scroll;
             }
@@ -63,6 +109,7 @@
                     /* height: auto; */
                     margin: 5px;
                     background-color: white;
+                    
                 }
                     .paper_container_row2_corpus_sentence_index {
                         display: flex;
@@ -81,15 +128,18 @@
                         width: 90%;
                         height: auto;
                         padding: 8px;
-                        background-color: violet;
+                        /* background-color: violet; */
                     }
             #paper_container_row2_trope_group {
                 display: flex;
                 width: 20%;
                 height: 90%;
-                margin-right: 10px;
+                margin-right: 5px;
                 flex-direction: column;
-                background-color: green;
+                border: 3px solid rgb(245, 122, 122);
+                border-radius: 8px;
+                padding: 4px;
+                /* background-color: green; */
                 /* -webkit-box-pack: center;
                 justify-content: center;
                 -webkit-box-align: center;
@@ -104,16 +154,27 @@
                     width: 95%;
                     height: auto;
                     margin: 5px;
-                    background-color: orange;
+                    /* background-color: orange; */
+                    
                 }
                     .paper_container_row2_trope_title {
-                        display: flex;
                         padding: 4px;
-                        background-color: lightcyan;
+                        background-color: rgb(224, 224, 224);
+                        display: flex;
                         -webkit-box-pack: center;
                         justify-content: center;
                         -webkit-box-align: center;
                         align-items: center;
+                    }
+                    .paper_container_row2_trope_title:hover {
+                        padding: 4px;
+                        background-color: lightcyan;
+                        display: flex;
+                        -webkit-box-pack: center;
+                        justify-content: center;
+                        -webkit-box-align: center;
+                        align-items: center;
+                        cursor: help;
                     }
                     .paper_container_row2_trope_option_group {
                         display: flex;
@@ -149,7 +210,7 @@
                             justify-content: center;
                             -webkit-box-align: center;
                             align-items: center;
-                            background-color: lightgreen;
+                            background-color: rgb(151, 151, 126);
                             cursor: pointer;
                         }
                     .paper_container_row2_trope_evidence_group {
@@ -175,7 +236,7 @@
                             height: 18px;
                             margin: 2px 4px;
                             /* padding: 0px 2px; */
-                            background-color: purple;
+                            background-color: grey;
                             text-align: center;
                             vertical-align: middle;
                             line-height: 18px;
@@ -185,9 +246,14 @@
                             height: 18px;
                             margin: 2px 4px;
                             /* padding: 0px 2px; */
-                            background-color: lightsteelblue;
+                            background-color: lightgrey;
                             text-align: center;
                             vertical-align: middle;
                             line-height: 18px;
                             cursor: pointer;
                         }
+                    .paper_container_row2_trope_box_line {
+                        width: 90%;
+                        height: 1px;
+                        border-bottom: 1px dashed rgba(0, 0, 0, 0.25);
+                    }
