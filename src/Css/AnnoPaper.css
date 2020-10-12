@@ -1,0 +1,163 @@
+#anno_paper {
+    position: fixed;
+    width:100%;
+    height: 100%;
+    z-index: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+    #paper_container {
+        /* position: fixed; */
+        display: flex;
+        width: 90%;
+        height: 90%;
+        background-color: rgba(224, 156, 129, 0.97);
+        border-radius: 8px;
+        flex-direction: column;
+        align-items: center;
+    }
+        #paper_container_row1 {
+            display: flex;
+            width: 70%;
+            height: 10%;
+            margin: 10px;
+            background-color: yellow;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            font-size: large;
+            font-family: 'Comfortaa', cursive;
+        }
+        #paper_container_row2 {
+            display: flex;
+            width: 100%;
+            height: 90%;
+            margin-top: 10px;
+            background-color: red;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+            #paper_container_row2_corpus_content {
+                display: flex;
+                width: 80%;
+                height: 95%;
+                margin-right: 20px;
+                flex-direction: column;
+                background-color: blue;
+                overflow-x: hidden;
+                overflow-y: scroll;
+            }
+                .paper_container_row2_corpus_sentence_box {
+                    display: flex;
+                    width: 100%;
+                    /* height: auto; */
+                    margin: 5px;
+                    background-color: white;
+                }
+                    .paper_container_row2_corpus_sentence_index {
+                        display: flex;
+                        width: 4%;
+                        height: auto;
+                        background-color: wheat;
+                        -webkit-box-pack: center;
+                        justify-content: center;
+                        -webkit-box-align: center;
+                        align-items: center;
+                        font-size: small;
+                        font-family: 'Comfortaa', cursive;
+                    }
+                    .paper_container_row2_corpus_sentence {
+                        display: flex;
+                        width: 90%;
+                        height: auto;
+                        padding: 8px;
+                        background-color: violet;
+                    }
+            #paper_container_row2_trope_group {
+                display: flex;
+                width: 20%;
+                height: 90%;
+                margin-right: 10px;
+                flex-direction: column;
+                background-color: green;
+                /* -webkit-box-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                align-items: center; */
+                align-items: center;
+                overflow-x: hidden;
+                overflow-y: scroll;
+            }
+                .paper_container_row2_trope_box {
+                    display: flex;
+                    flex-direction: column;
+                    width: 95%;
+                    height: auto;
+                    margin: 5px;
+                    background-color: orange;
+                }
+                    .paper_container_row2_trope_title {
+                        display: flex;
+                        padding: 4px;
+                        background-color: lightcyan;
+                        -webkit-box-pack: center;
+                        justify-content: center;
+                        -webkit-box-align: center;
+                        align-items: center;
+                    }
+                    .paper_container_row2_trope_option_group {
+                        display: flex;
+                        align-content: space-around;
+                    }
+                        .paper_container_row2_trope_option {
+                            display: flex;
+                            width:80px;
+                            height: 20px;
+                            padding: 3px;
+                            -webkit-box-pack: center;
+                            justify-content: center;
+                            -webkit-box-align: center;
+                            align-items: center;
+                        }
+                        /* .paper_container_row2_trope_option_selected {
+                            display: flex;
+                            width:80px;
+                            height: 20px;
+                            padding: 3px;
+                            -webkit-box-pack: center;
+                            justify-content: center;
+                            -webkit-box-align: center;
+                            align-items: center;
+                            background-color: green;
+                        } */
+                        .paper_container_row2_trope_option:hover {
+                            display: flex;
+                            width:80px;
+                            height: 20px;
+                            padding: 3px;
+                            -webkit-box-pack: center;
+                            justify-content: center;
+                            -webkit-box-align: center;
+                            align-items: center;
+                            background-color: lightgreen;
+                            cursor: pointer;
+                        }
+                    .paper_container_row2_trope_evidence_group {
+                        display: flex;
+                        margin: 3px;
+                    }
+                        .paper_container_row2_trope_evidence_input {
+                            width: 35px;
+                            height: 15px;
+                            padding: 0px 4px;
+                        }

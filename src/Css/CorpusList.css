@@ -1,0 +1,146 @@
+#corpus_list {
+    width: 50%;
+    height: 600px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 5% auto;
+    display: flex;
+    flex-direction: column;
+}
+    #corpus_list_title {
+        width: auto;
+        height: 40px;
+        font-size: xx-large;
+        text-align: center;
+        font-family: 'Permanent Marker', cursive;
+        color: red;
+        margin-bottom: 25px;
+    }
+    #corpus_list_content {
+        width: auto;
+        height: 500px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        border: 1px solid tomato;
+        padding: 0px 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    #corpus_list_content::-webkit-scrollbar{
+        display:none;
+    }
+        .corpus_list_item {
+            background-color: rgba(250, 250, 210, 1.0);
+            width: auto;
+            height:50px;
+            text-align: left;
+            border-radius: 5px;
+            margin: 10px 0px;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: left;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+        .corpus_list_item:hover {
+            background-color: rgb(245, 245, 171);
+            cursor: pointer;
+            width: auto;
+            height: 54px;
+            text-align: left;
+            margin: 10px 0px;
+            font-size: large;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: left;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+        .corpus_list_item span{
+            display: inline-block;
+            vertical-align: middle;
+            font-family: 'Comfortaa', cursive;
+            padding: 0px 20px;
+        }
+        .corpus_list_item_title {
+            width: 80%;
+        }
+        .corpus_list_item_status {
+            text-align: right;
+            width: 20%;
+        }
+    #btn_group {
+        display: flex;
+        width: 100%;
+        height: 60px;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+    }
+        #load_btn {
+            margin-top: 20px;
+            margin-right: 10px;
+            width:280px;
+            height: 40px;
+            background-color: pink ;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            border-radius: 6px;
+            color: white;
+        }
+        #load_btn:hover {
+            margin-top: 20px;
+            width:280px;
+            height: 40px;
+            background-color: lightcoral;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+        }
+        #load_btn input{
+            width:280px;
+            height: auto;
+            padding-left: 20px;
+        }
+        #load_btn input:focus{
+            outline: none;
+        }
+        #save_btn {
+            margin-top: 20px;
+            margin-left: 10px;
+            width: 120px;
+            height: 40px;
+            background-color: lightgreen;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            border-radius: 6px;
+            color: white;
+        }
+        #save_btn:hover {
+            margin-top: 20px;
+            width: 120px;
+            height: 40px;
+            background-color: rgb(36, 235, 36);
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+        }
