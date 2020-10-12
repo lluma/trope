@@ -1,6 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import '../Css/AnnoPaper.css';
 
+const isNumeric = (str) => {
+    if (typeof str != "string") return false // we only process strings!  
+    return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+           !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+};
+
 export default ({ data, result, handleClosePaperFunc, handleSaveResultFunc }) => {
 
     // console.log(data);
@@ -14,7 +20,7 @@ export default ({ data, result, handleClosePaperFunc, handleSaveResultFunc }) =>
     const handleChooseTropeOption = (e, trope, opt) => {
 
         let newAnnotations = { ...tempResult.annotations };
-        newAnnotations[trope] = { trope: trope, option: opt };
+        newAnnotations[trope] = { ...newAnnotations[trope], trope: trope, option: opt, evidences: [] };
         setTempResult(tempResult => ({
             ...tempResult,
             annotations: newAnnotations
@@ -23,10 +29,53 @@ export default ({ data, result, handleClosePaperFunc, handleSaveResultFunc }) =>
 
     const handleEnterEvidence = (e, trope) => {
         if (e.key === 'Enter') {
-            console.log(inputRef.current.value);
+            let value = inputRef.current.value;
+            let int_value = parseInt(value);
+            let newAnnotations = { ...tempResult.annotations };
+            let newEvidences = newAnnotations[trope].evidences;
+            let index = newEvidences.indexOf(int_value);
+            if (isNumeric(value) && index === -1 && int_value < (data.sentences.length + 1)) {
+                newEvidences.push(int_value);
+                newAnnotations[trope] = { ...newAnnotations[trope], trope: trope, evidences: newEvidences };
+                setTempResult(tempResult => ({
+                    ...tempResult,
+                    annotations: newAnnotations
+                }));
+            }
+            inputRef.current.value = '';
+        }
+    }
+
+    const handleRemoveEvidence = (e, trope, value) => {
+        let newAnnotations = { ...tempResult.annotations };
+        let newEvidences = newAnnotations[trope].evidences;
+        let index = newEvidences.indexOf(value);
+        if (index !== -1) {
+            newEvidences.splice(index, 1);
+            newAnnotations[trope] = { ...newAnnotations[trope], trope: trope, evidences: newEvidences };
+            setTempResult(tempResult => ({
+                ...tempResult,
+                annotations: newAnnotations
+            }));
         }
     }
     
+    const checkValidateSaveResult = () => {
+        for (var trope in tempResult.annotations) {
+            let annotation = tempResult.annotations[trope];
+            if ((annotation.option === 'Match' || annotation.option === 'Similar') 
+                && annotation.evidences.length === 0) 
+                return {
+                    success: false,
+                    msg: `The evidences of trope "${trope}" cannot be empty!`
+                };
+        }
+        return {
+            success: true,
+            msg: ''
+        };
+    };
+
     useEffect(() => {
         setTempResult(result);
     }, [result])
@@ -36,8 +85,14 @@ export default ({ data, result, handleClosePaperFunc, handleSaveResultFunc }) =>
             onClick={(e) => {
                 e.preventDefault();
                 if (e.target.id === 'anno_paper') {
-                    handleClosePaperFunc(e);
-                    handleSaveResultFunc(tempResult);
+                    
+                    let checkResult = checkValidateSaveResult();
+                    if (checkResult.success)  {
+                        handleClosePaperFunc(e);
+                        handleSaveResultFunc(tempResult);
+                    }
+                    else
+                        alert(checkResult.msg);
                 }
             }}
         >
@@ -88,14 +143,30 @@ export default ({ data, result, handleClosePaperFunc, handleSaveResultFunc }) =>
                                 </div>
                                 <div className="paper_container_row2_trope_evidence_group">
                                     {trope in tempResult.annotations && (tempResult.annotations[trope].option === "Match" || tempResult.annotations[trope].option === "Similar")
-                                    && <input 
-                                        ref={inputRef}
-                                        className="paper_container_row2_trope_evidence_input"
-                                        placeholder="index"
-                                        onKeyDown={(e) => handleEnterEvidence(e, trope)}
-                                    />}
-                                    
-                                    <div></div>
+                                    && (
+                                        <React.Fragment>
+                                            
+                                            <div className="paper_container_row2_trope_evidence_input_wrapper">
+                                                <input 
+                                                    ref={inputRef}
+                                                    className="paper_container_row2_trope_evidence_input"
+                                                    placeholder="index"
+                                                    onKeyDown={(e) => handleEnterEvidence(e, trope)}
+                                                />
+                                            </div>
+                                            {tempResult.annotations 
+                                            && trope in tempResult.annotations 
+                                            && tempResult.annotations[trope].evidences.map((sent_line_idx, evidence_idx) => (
+                                                <div 
+                                                    key={evidence_idx}
+                                                    className="paper_container_row2_trope_evidence"
+                                                    onClick={(e) => handleRemoveEvidence(e, trope, sent_line_idx)}
+                                                >
+                                                    {sent_line_idx}
+                                                </div>
+                                            ))}
+                                        </React.Fragment>
+                                    )}
                                 </div>
                             </div>
                         ))}

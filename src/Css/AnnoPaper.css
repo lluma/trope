@@ -154,10 +154,40 @@
                         }
                     .paper_container_row2_trope_evidence_group {
                         display: flex;
-                        margin: 3px;
+                        width: 100%;
+                        height: auto;
+                        margin: 8px 0px;
+                        flex-wrap: wrap;
                     }
+                        .paper_container_row2_trope_evidence_input_wrapper {
+                            width: 40px;
+                            height: 15px;
+                            margin-left: 4px;
+                            margin-right: 8px;
+                        }
                         .paper_container_row2_trope_evidence_input {
                             width: 35px;
                             height: 15px;
                             padding: 0px 4px;
+                        }
+                        .paper_container_row2_trope_evidence {
+                            width: 20px;
+                            height: 18px;
+                            margin: 2px 4px;
+                            /* padding: 0px 2px; */
+                            background-color: purple;
+                            text-align: center;
+                            vertical-align: middle;
+                            line-height: 18px;
+                        }
+                        .paper_container_row2_trope_evidence:hover {
+                            width: 20px;
+                            height: 18px;
+                            margin: 2px 4px;
+                            /* padding: 0px 2px; */
+                            background-color: lightsteelblue;
+                            text-align: center;
+                            vertical-align: middle;
+                            line-height: 18px;
+                            cursor: pointer;
                         }

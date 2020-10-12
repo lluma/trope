@@ -1,4 +1,4 @@
-,,category,sub-category,trope,definition,
+,categroy_item_id,category,sub-category,trope,definition,
 1,1,Character Trait,Evil/Asshole,Big Bad,The character who is the direct cause of all of the bad happenings in a story.,
 2,2,Character Trait,Evil/Asshole,Jerkass,A character who is so completely obnoxious that it is unbelievable anyone would willingly interact with them.,
 3,3,Character Trait,Evil/Asshole,Faux Affably Evil,A villain whose politeness is an act that only serves to enhance their evil.,
@@ -6,14 +6,14 @@
 5,5,Character Trait,Evil/Asshole,Abusive Parents,"This includes parents who are emotionally, verbally, physically, or mentally abusive, or who neglectfully allow their children to be abused 
 by others if they don't abuse the child themselves",
 6,6,Character Trait,Evil/Asshole,Would Hurt a Child,"People that do hurt children, sometimes even kill them.",
-7,1,Character Trait,Good at…,Action Girl,An Action Girl is a female badass who is tough and kicks butt.,
-8,2,Character Trait,Good at…,Reasonable Authority Figure,"Authirity that is open to heros' inasane ideas.  Often, they'll ask for proof and facts rather than follow baseless accusations, but even then, 
+7,1,Character Trait,Good at,Action Girl,An Action Girl is a female badass who is tough and kicks butt.,
+8,2,Character Trait,Good at,Reasonable Authority Figure,"Authirity that is open to heros' inasane ideas.  Often, they'll ask for proof and facts rather than follow baseless accusations, but even then, 
 they'll usually humor the heroes and go check out their theories.",
-9,3,Character Trait,Good at…,Papa Wolf,"Paternal instinct can transform a Bumbling Dad into an Action Dad. If someone threatens his kids they will soon wish 
+9,3,Character Trait,Good at,Papa Wolf,"Paternal instinct can transform a Bumbling Dad into an Action Dad. If someone threatens his kids they will soon wish 
 they'd never come within a mile of them.",
-10,4,Character Trait,Good at…,Deadpan Snarker,"A character prone to gnomic, sarcastic, sometimes bitter, occasionally whimsical asides.",
-11,5,Character Trait,Good at…,Determinator,"A character \ good or evil, male or female, young or old \ who never gives up. Ever. No matter what.",
-12,6,Character Trait,Good at…,Only Sane Man,"When there is a group of characters who are all just totally weird, either in general or in a particular scenario, the Only Sane Man is the only 
+10,4,Character Trait,Good at,Deadpan Snarker,"A character prone to gnomic, sarcastic, sometimes bitter, occasionally whimsical asides.",
+11,5,Character Trait,Good at,Determinator,"A character \ good or evil, male or female, young or old \ who never gives up. Ever. No matter what.",
+12,6,Character Trait,Good at,Only Sane Man,"When there is a group of characters who are all just totally weird, either in general or in a particular scenario, the Only Sane Man is the only 
 one who, well, isn't.",
 13,1,Character Trait,Complicated,Anti-Hero,An antihero is a protagonist who has the opposite of most of the traditional attributes of a hero.,
 14,2,Character Trait,Complicated,Asshole Victim,When the victim is a bad guy.,
@@ -21,12 +21,12 @@ one who, well, isn't.",
 16,4,Character Trait,Complicated,Even Evil Has Standards,"Keep a villain safely on the ""still sympathetic"" side of the Moral Event Horizon; give him something that he simply will not do.",
 17,5,Character Trait,Complicated,Affably Evil,"Villains that are not too bad. There is absolutely nothing separating them from being normal, polite people except for the fact that they want 
 to take over the world.",
-18,1,Character Trait,Poor at…,Too Dumb to Live,People who are so stupid that they simply do not deserve to survive.,
-19,2,Character Trait,Poor at…,Butt-Monkey,"The character who is always the butt of the demeaning joke or the ""put them through hell"" plotline.",
-20,3,Character Trait,Poor at…,Ax-Crazy,"An ""ax-crazy"" character is someone who is psychologically unstable and presents a clear and immediate danger to others.",
-21,4,Character Trait,Poor at…,Adorkable,"An adorkable character might be socially inept, shy or clumsy. However, rather than making them an outcast, these quirks give the character 
+18,1,Character Trait,Poor at,Too Dumb to Live,People who are so stupid that they simply do not deserve to survive.,
+19,2,Character Trait,Poor at,Butt-Monkey,"The character who is always the butt of the demeaning joke or the ""put them through hell"" plotline.",
+20,3,Character Trait,Poor at,Ax-Crazy,"An ""ax-crazy"" character is someone who is psychologically unstable and presents a clear and immediate danger to others.",
+21,4,Character Trait,Poor at,Adorkable,"An adorkable character might be socially inept, shy or clumsy. However, rather than making them an outcast, these quirks give the character 
 an endearing vulnerability.",
-22,5,Character Trait,Poor at…,Berserk Button,"Some characters always get enraged when given a certain, minor trigger.",
+22,5,Character Trait,Poor at,Berserk Button,"Some characters always get enraged when given a certain, minor trigger.",
 23,1,Character Trait,Others,Ms. Fanservice,"A female character who provides a significant amount of Fanservice (generally for males), ranging from simple revealing of cleavage, midriff, 
 shoulders or legs, to shots of her curves, hips or derriere (even when covered).",
 24,2,Character Trait,Others,The Alcoholic,"This person likes their liquor, and in large amounts.",

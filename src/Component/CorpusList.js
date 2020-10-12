@@ -4,6 +4,30 @@ import Tropes from '../Data/tropes4amt.json';
 import AnnoPaper from './AnnoPaper';
 import '../Css/CorpusList.css';
 
+const IGNORE_CORPUS = [
+    'MissionImpossibleII',
+    'MarleyAndMe',
+    'DeadSpaceDownfall',
+    'CoolRunnings',
+    'SmallTimeCrooks',
+    'MoonOverMiami',
+    'FuneralInBerlin',
+    'TheChangeling',
+    'MurderParty',
+    'Ararat',
+    'WeWereSoldiers',
+    'ExitWounds',
+    'ItHappenedHere',
+    'TheMusicMan',
+    'SnowCake',
+    'BlackSea',
+    'BlackSnakeMoan',
+    'Anaconda',
+    'TheIncredibleShrinkingMan',
+    'TheGingerdeadMan',
+    'ShadowOfADoubt'
+];
+
 // console.log(Corpus);
 // console.log(Tropes);
 
@@ -85,23 +109,32 @@ export default () => {
             <div id="corpus_list">
                 <div id="corpus_list_title">Trope Annotation</div>
                 <div id="corpus_list_content">
-                    {Object.keys(Corpus).map((title, title_idx) => (
-                        <div 
-                            className="corpus_list_item" 
-                            key={title_idx+1}
-                            onClick={(e) => handleChooseCorpus(e, {
-                                title: title,
-                                idx: title_idx + 1,
-                                sentences: Object.keys(Corpus[title]).map((line) => Corpus[title][line]),
-                                tropeOptions: Tropes[title]
-                            })}
-                        >
-                            <span className="corpus_list_item_title"><p>{`${title_idx+1}. ${title}`}</p></span>
-                            <span className="corpus_list_item_status">
-                                {Object.keys(result[title].annotations).length}/{Tropes[title].length}
-                            </span>
-                        </div>
-                    ))}
+                    {Object.keys(Corpus).map((title, title_idx) => {
+                        // if (IGNORE_CORPUS.includes(title)) return null;
+                        let tropes = Tropes[title];
+                        let completed_style = {};
+                        let completed_annotations = Object.keys(result[title].annotations);
+                        if (completed_annotations.length === tropes.length) 
+                            completed_style = { backgroundColor: 'green' };
+                        return (
+                            <div 
+                                className="corpus_list_item" 
+                                key={title_idx+1}
+                                style={completed_style}
+                                onClick={(e) => handleChooseCorpus(e, {
+                                    title: title,
+                                    idx: title_idx + 1,
+                                    sentences: Object.keys(Corpus[title]).map((line) => Corpus[title][line]),
+                                    tropeOptions: Tropes[title]
+                                })}
+                            >
+                                <span className="corpus_list_item_title"><p>{`${title_idx+1}. ${title}`}</p></span>
+                                <span className="corpus_list_item_status">
+                                    {completed_annotations.length}/{tropes.length}
+                                </span>
+                            </div>
+                        );
+                    })}
                 </div>
                 <div id="btn_group">
                     <div id="load_btn">
