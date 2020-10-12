@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/trope/static/css/main.cf397db2.chunk.css",
+    "main.js": "/trope/static/js/main.00b82a63.chunk.js",
+    "main.js.map": "/trope/static/js/main.00b82a63.chunk.js.map",
+    "runtime-main.js": "/trope/static/js/runtime-main.12b3805e.js",
+    "runtime-main.js.map": "/trope/static/js/runtime-main.12b3805e.js.map",
+    "static/js/2.5d80e92c.chunk.js": "/trope/static/js/2.5d80e92c.chunk.js",
+    "static/js/2.5d80e92c.chunk.js.map": "/trope/static/js/2.5d80e92c.chunk.js.map",
+    "index.html": "/trope/index.html",
+    "precache-manifest.ca236d35388563f108c97f7146739667.js": "/trope/precache-manifest.ca236d35388563f108c97f7146739667.js",
+    "service-worker.js": "/trope/service-worker.js",
+    "static/css/main.cf397db2.chunk.css.map": "/trope/static/css/main.cf397db2.chunk.css.map",
+    "static/js/2.5d80e92c.chunk.js.LICENSE.txt": "/trope/static/js/2.5d80e92c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.12b3805e.js",
+    "static/js/2.5d80e92c.chunk.js",
+    "static/css/main.cf397db2.chunk.css",
+    "static/js/main.00b82a63.chunk.js"
+  ]
+}
