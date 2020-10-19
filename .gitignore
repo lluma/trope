@@ -1,5 +1,15 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# private files
+/figures
+/Result_*
+/.ipynb_checkpoints
+Statistics.ipynb
+Trope annotation tool document v2.docx
+Trope annotation tool document v2.pdf
+Trope annotation tool document.docx
+Trope annotation tool document.pdf
+
 # dependencies
 /node_modules
 /.pnp
