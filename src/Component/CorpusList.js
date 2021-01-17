@@ -107,7 +107,7 @@ export default () => {
     return (
         <React.Fragment>
             <div id="corpus_list">
-                <div id="corpus_list_title">Trope Annotation</div>
+                <div id="corpus_list_title">Trope Annotation - Corpus</div>
                 <div id="corpus_list_content">
                     {Object.keys(Corpus).map((title, title_idx) => {
                         if (IGNORE_CORPUS.includes(title)) return null;
