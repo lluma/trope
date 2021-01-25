@@ -120,6 +120,12 @@
                 overflow-x: hidden;
                 overflow-y: scroll;
             }
+                #audio_mask {
+                    width: 640px;
+                    height: 480px;
+                    position: absolute;
+                    background-color: black;
+                }
             #paper_container_row2_trope_group {
                 display: flex;
                 width: 20%;

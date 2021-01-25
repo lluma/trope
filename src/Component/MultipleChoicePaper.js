@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import '../Css/MultipleChoicePaper.css'; 
 import Video2Url from '../Data/video2url.json';
 import Trope2Category from '../Data/trope2category.json';
 import Tropes from '../Data/category.json';
-
-const MODAL_TYPES = ['sub', 'descrip', 'video'];
-const MODAL_NAMES = ['Subtitle', 'Description', 'Video'];
+import CONFIG from '../Utils/config';
+import '../Css/MultipleChoicePaper.css'; 
 
 /**
  * data format:
@@ -36,24 +34,39 @@ const DescripContent = ({ data }) => {
     );
 };
 
-const VideoContent = ({ data }) => {
+const AudioContent = ({ data }) => {
     return (
         <div>
+            <div id="audio_mask"></div>
             {(data['data-video-name'] !== "")? 
                 (
                     <video width="640" height="480" controls>
                         <source src={Video2Url[data['data-video-name']]} type="video/mp4" />
                     </video>
                 ):
+                `"Audio" is not supported in this sample! Please choose another modal type.`}
+        </div>
+    );
+};
+
+const VideoContent = ({ data }) => {
+    return (
+        <div>
+            {(data['data-video-name'] !== "")? 
+                (
+                    <video width="640" height="480" controls muted>
+                        <source src={Video2Url[data['data-video-name']]} type="video/mp4" />
+                    </video>
+                ):
                 `"Video" is not supported in this sample! Please choose another modal type.`}
         </div>
     );
-}
+};
 
-export default ({ data, handle_save_result_func, handle_close_paper_func }) => {
+export default ({ data, mainModal, handle_save_result_func, handle_close_paper_func }) => {
 
     const [ tempResult, setTempResult ] = useState({ ...data, ans: '' });
-    const [ modal, setModal ] = useState(MODAL_TYPES[0]);
+    const [ modal, setModal ] = useState(mainModal);
     const [ options, setOptions ] = useState([]);
 
     useEffect(() => {
@@ -153,7 +166,7 @@ export default ({ data, handle_save_result_func, handle_close_paper_func }) => {
                 <div id="paper_container_row1">
                     <div id="paper_container_row1_title"><p>{`Test #${data.index + 1}`}</p></div>
                     <div id="modal_btn_group">
-                        {MODAL_TYPES.map((m_type, m_type_idx) => {
+                        {CONFIG.MODAL_TYPES.map((m_type, m_type_idx) => {
                             let btn_className = (modal === m_type)? 'modal_btn_chosen':'modal_btn';
                             return (
                                 <div 
@@ -161,7 +174,7 @@ export default ({ data, handle_save_result_func, handle_close_paper_func }) => {
                                     className={btn_className}
                                     onClick={(e) => choose_modal(e, m_type)}
                                 >
-                                    {MODAL_NAMES[m_type_idx]}
+                                    {CONFIG.MODAL_NAMES[m_type_idx]}
                                 </div>
                             );
                         })}
@@ -169,13 +182,16 @@ export default ({ data, handle_save_result_func, handle_close_paper_func }) => {
                 </div>
                 <div id="paper_container_row2">
                     <div id="paper_container_row2_content">
-                        <div style={{ display: (modal === MODAL_TYPES[0])? 'flex': 'none'}}>
+                        <div style={{ display: (modal === CONFIG.MODAL_TYPES[0])? 'flex': 'none'}}>
                             <SubContent data={data} />
                         </div>
-                        <div style={{ display: (modal === MODAL_TYPES[1])? 'flex': 'none'}}>
+                        <div style={{ display: (modal === CONFIG.MODAL_TYPES[1])? 'flex': 'none'}}>
                             <DescripContent data={data} />
                         </div>
-                        <div style={{ display: (modal === MODAL_TYPES[2])? 'flex': 'none'}}>
+                        <div style={{ display: (modal === CONFIG.MODAL_TYPES[2])? 'flex': 'none'}}>
+                            <AudioContent data={data} />
+                        </div>
+                        <div style={{ display: (modal === CONFIG.MODAL_TYPES[3])? 'flex': 'none'}}>
                             <VideoContent data={data} />
                         </div>
                     </div>
