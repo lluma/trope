@@ -188,12 +188,16 @@ export default ({ data, mainModal, handle_save_result_func, handle_close_paper_f
                         <div style={{ display: (modal === CONFIG.MODAL_TYPES[1])? 'flex': 'none'}}>
                             <DescripContent data={data} />
                         </div>
-                        <div style={{ display: (modal === CONFIG.MODAL_TYPES[2])? 'flex': 'none'}}>
-                            <AudioContent data={data} />
-                        </div>
-                        <div style={{ display: (modal === CONFIG.MODAL_TYPES[3])? 'flex': 'none'}}>
-                            <VideoContent data={data} />
-                        </div>
+                        {(modal === CONFIG.MODAL_TYPES[2])? (
+                            <div style={{ display: (modal === CONFIG.MODAL_TYPES[2])? 'flex': 'none'}}>
+                                <AudioContent data={data} />
+                            </div>
+                        ):(null)}
+                        {(modal === CONFIG.MODAL_TYPES[3])? (
+                            <div style={{ display: (modal === CONFIG.MODAL_TYPES[3])? 'flex': 'none'}}>
+                                <VideoContent data={data} />
+                            </div>
+                        ):(null)}
                     </div>
                     <div id="paper_container_row2_trope_group">
                         {/* {sample_options(data['data-video-tropename'])} */}
