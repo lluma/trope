@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "74727d312f48a23956336746c1eff836",
+    "revision": "6b0831e8413ef6ca0f26b6f140a98433",
     "url": "/trope/index.html"
   },
   {
-    "revision": "e62f5e29ccea6e57e8d5",
+    "revision": "0938cc4e4533faf7bcf7",
     "url": "/trope/static/css/main.1628acef.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/trope/static/js/2.f4a18154.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e62f5e29ccea6e57e8d5",
-    "url": "/trope/static/js/main.7072c3f3.chunk.js"
+    "revision": "0938cc4e4533faf7bcf7",
+    "url": "/trope/static/js/main.b3adba74.chunk.js"
   },
   {
     "revision": "bb932a4242341bc7efea",
