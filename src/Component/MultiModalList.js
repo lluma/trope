@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import TestData from '../Data/newtest_trope10.json';
+import TestData from '../Data/newtest_trope10_with_options.json';
 import MultipleChoicePaper from './MultipleChoicePaper';
 import CONFIG from '../Utils/config';
 import '../Css/MultiModalList.css';
 
 const removeEmptyData = (test_data) => {
-    return test_data.filter((d) => d['data-video-sub'] !== "" 
-        && d['data-video-tropename'] !== "" 
-        && d['data-video-descrip'] !== ""
-        && d['data-video-name'] !== "");
+    // return test_data.filter((d) => d['data-video-sub'] !== "" 
+    //     && d['data-video-tropename'] !== "" 
+    //     && d['data-video-descrip'] !== ""
+    //     && d['data-video-name'] !== "");
+    return test_data; // Current version return original full data.
 }
 
 export default () => {
@@ -17,7 +18,7 @@ export default () => {
     const [ mainModal, setMainModal ] = useState(CONFIG.MODAL_TYPES[0]);
     const [ multiModalPaperDisplay, setMultiModalPaperDisplay ] = useState(false);
     const [ result, setResult ] = useState(removeEmptyData(TestData).map((cur, cur_idx) => {
-        return { ...cur, index: cur_idx, options: [], ans: '' };
+        return { ...cur, index: cur_idx, ans: '', conf: -1 };
     }));
 
     const handle_choose_data = (e, newData) => {
@@ -88,7 +89,7 @@ export default () => {
                 <div id="multimodal_list_content">
                     {removeEmptyData(TestData).map((item, item_idx) => {
                         let item_style = {};
-                        if (result[item_idx]['ans'] !== '')
+                        if (result[item_idx]['ans'] !== '' && result[item_idx]['conf'] >= 0)
                             item_style = { "background": "green" };
 
                         return (

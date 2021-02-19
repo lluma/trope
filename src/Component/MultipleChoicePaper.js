@@ -49,16 +49,56 @@ const AudioContent = ({ data }) => {
     );
 };
 
-const VideoContent = ({ data }) => {
+const VideoContent = ({ data, muted = false }) => {
     return (
         <div>
             {(data['data-video-name'] !== "")? 
                 (
-                    <video width="640" height="480" controls muted>
+                    <video width="640" height="480" controls muted={muted}>
                         <source src={Video2Url[data['data-video-name']]} type="video/mp4" />
                     </video>
                 ):
                 `"Video" is not supported in this sample! Please choose another modal type.`}
+        </div>
+    );
+};
+
+const TropeOption = ({ trope, chosen = false, selectedConf = -1, onChooseTropeFunc, onSelectConfFunc }) => {
+
+    return (chosen)?(
+        <div className="paper_container_row2_trope_box_chosen_group">
+            <div
+                className="paper_container_row2_trope_box_chosen"
+                onClick={(e) => onChooseTropeFunc(e, trope)}
+            >
+                {trope}
+            </div>
+            <div className="paper_container_row2_trope_box_chosen_conf">
+                <div className="paper_container_row2_trope_box_chosen_conf_title">
+                    Confidence
+                </div>
+                <div className="paper_container_row2_trope_box_chosen_conf_option_group">
+                    {[1, 0.5, 0].map((c, c_idx) => {
+                        let selected = selectedConf === c;
+                        let conf_class = (selected)? "paper_container_row2_trope_box_chosen_conf_option_selected":
+                        "paper_container_row2_trope_box_chosen_conf_option"
+                        return (
+                            <div 
+                                key={c_idx}
+                                className={conf_class}
+                                onClick={(e) => onSelectConfFunc(e, c)}
+                            >{c}</div>
+                        );
+                    })}
+                </div>
+            </div>
+        </div>
+    ):(
+        <div
+            className="paper_container_row2_trope_box"
+            onClick={(e) => onChooseTropeFunc(e, trope)}
+        >
+            {trope}
         </div>
     );
 };
@@ -128,7 +168,7 @@ export default ({ data, mainModal, handle_save_result_func, handle_close_paper_f
         setModal(m);
     }
 
-    const choose_option = (e, opt) => {
+    const choose_trope_option = (e, opt) => {
         if (tempResult['ans'] === opt) {
             setTempResult({
                 ...tempResult,
@@ -141,7 +181,22 @@ export default ({ data, mainModal, handle_save_result_func, handle_close_paper_f
                 ans: opt
             });
         }
-        
+    }
+
+    const select_confidence_option = (e, conf) => {
+
+        if (tempResult['conf'] === conf) {
+            setTempResult({
+                ...tempResult,
+                conf: -1
+            });
+        }
+        else {
+            setTempResult({
+                ...tempResult,
+                conf: conf
+            });
+        }
     }
 
     return (
@@ -195,24 +250,29 @@ export default ({ data, mainModal, handle_save_result_func, handle_close_paper_f
                         ):(null)}
                         {(modal === CONFIG.MODAL_TYPES[3])? (
                             <div style={{ display: (modal === CONFIG.MODAL_TYPES[3])? 'flex': 'none'}}>
-                                <VideoContent data={data} />
+                                <VideoContent data={data} muted={true} />
+                            </div>
+                        ):(null)}
+                        {(modal === CONFIG.MODAL_TYPES[4])? (
+                            <div style={{ display: (modal === CONFIG.MODAL_TYPES[4])? 'flex': 'none'}}>
+                                <VideoContent data={data} muted={false}/>
                             </div>
                         ):(null)}
                     </div>
                     <div id="paper_container_row2_trope_group">
                         {/* {sample_options(data['data-video-tropename'])} */}
                         {options.map((opt, opt_idx) => {
-                            let className = "paper_container_row2_trope_box";
-                            if (tempResult['ans'] === opt)
-                                className = "paper_container_row2_trope_box_chosen";
+                            let chosen = tempResult['ans'] === opt;
+                            let conf = (chosen)? tempResult['conf']:-1;
                             return (
-                                <div
-                                    key={opt_idx}
-                                    className={className}
-                                    onClick={(e) => choose_option(e, opt)}
-                                >
-                                    {opt}
-                                </div>
+                                <TropeOption 
+                                    key={opt_idx} 
+                                    trope={opt}
+                                    chosen={chosen}
+                                    selectedConf={conf}
+                                    onChooseTropeFunc={choose_trope_option}
+                                    onSelectConfFunc={select_confidence_option}
+                                />
                             );
                         })}
                     </div>

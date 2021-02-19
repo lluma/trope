@@ -1,5 +1,5 @@
-const MODAL_TYPES = ['sub', 'descrip', 'audio', 'video'];
-const MODAL_NAMES = ['Subtitle', 'Description', 'Audio', 'Video'];
+const MODAL_TYPES = ['sub', 'descrip', 'audio', 'video', 'video + audio'];
+const MODAL_NAMES = ['Subtitle', 'Description', 'Audio', 'Video', 'Video-Audio'];
 
 export default {
     MODAL_TYPES,
